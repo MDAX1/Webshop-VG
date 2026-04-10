@@ -1,100 +1,74 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Contact Us</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="../js/webshop.js" defer></script>
 </head>
 
 <body class="bg-dark text-light d-flex flex-column min-vh-100">
-
-<!-- NAVBAR -->
-<header class="bg-primary shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-
-    <a class="navbar-brand" href="../index.html">Webshop</a>
-
-    <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav gap-3">
-        <li><a class="nav-link" href="../index.html">Home</a></li>
-        <li><a class="nav-link" href="aboutUs.html">About</a></li>
-        <li><a class="nav-link active" href="contactUs.html">Contact</a></li>
-
-        <!-- FIXED CART -->
-        <li>
-          <a class="nav-link position-relative" href="cart.html">
-            🛒
-            <span id="cart-badge"
-              class="badge bg-danger position-absolute top-0 start-100 translate-middle"></span>
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-</header>
-
-<!-- MAIN -->
-<main class="container flex-grow-1 py-5">
-
-  <div class="row justify-content-center">
-
-    <div class="col-md-8">
-
-      <div class="card bg-secondary text-light p-5 shadow-lg contact-card">
-
-        <h1 class="text-center mb-4">Contact Us</h1>
-
-        <p class="text-center opacity-75 mb-4">
-          Have questions? Send us a message and we will respond quickly.
-        </p>
-
-        <form action="thankyou.html">
-
-          <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control form-control-lg" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Phone</label>
-            <input type="tel" class="form-control form-control-lg" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control form-control-lg" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Message</label>
-            <textarea class="form-control form-control-lg" rows="5" required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-lg w-100">
-            Send Message
-          </button>
-
-        </form>
-
-        <a href="../index.html" class="btn btn-outline-light mt-4 w-100">
-          ← Back to Shop
-        </a>
-
+  <header class="bg-primary shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+      <a class="navbar-brand" href="../index.html">Webshop</a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav gap-3">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="aboutUs.html">About</a></li>
+          <li><a class="nav-link active" href="contactUs.html">Contact</a></li>
+          <li>
+            <a class="nav-link position-relative" href="cart.html">
+              🛒
+              <span id="cart-badge" class="badge bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </a>
+          </li>
+        </ul>
       </div>
+    </nav>
+  </header>
 
+  <main class="container flex-grow-1 py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card bg-secondary text-light p-5 shadow-lg contact-card">
+          <h1 class="text-center mb-4">Contact Us</h1>
+          <p class="text-center opacity-75 mb-4">
+            Have questions? Send us a message and we will respond quickly.
+          </p>
+          <form action="thankyou.html">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control form-control-lg" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-control form-control-lg" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control form-control-lg" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea class="form-control form-control-lg" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+              Send Message
+            </button>
+          </form>
+          <a href="../index.html" class="btn btn-outline-light mt-4 w-100">
+            ← Back to Shop
+          </a>
+        </div>
+      </div>
     </div>
+  </main>
 
-  </div>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="bg-primary text-center text-white py-4 mt-auto">
-  <p class="mb-0">© 2026 Webshop</p>
-</footer>
+  <footer class="bg-primary text-center text-white py-4 mt-auto">
+    <p class="mb-0">© 2026 Webshop</p>
+  </footer>
 
 </body>
+
 </html>
