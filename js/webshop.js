@@ -37,6 +37,38 @@ productContainer.appendChild(col);
 // Kör badge-uppdatering vid varje sidladdning
 updateCartBadge();
 
+function addToCart(product) {
+  const cart = getCart();
+  const found = cart.find((item) => item.id === product.id);
+
+  if (found) {
+    found.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      thumbnail: product.thumbnail,
+      quantity: 1,
+    });
+  }
+
+  saveCart(cart);
+  updateCartBadge();
+  showToast(product.title + " lades i varukorgen!");
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.style.cssText =
+    "position:fixed;bottom:1.5rem;right:1.5rem;background:#0d6efd;" +
+    "color:#fff;padding:.75rem 1.25rem;border-radius:.5rem;z-index:9999;" +
+    "box-shadow:0 4px 12px rgba(0,0,0,.3);";
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
+}
+
 const productContainer = document.getElementById("products");
 
 if (productContainer) {
