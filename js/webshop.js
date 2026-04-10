@@ -69,6 +69,39 @@ function showToast(message) {
   setTimeout(() => toast.remove(), 2500);
 }
 
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  if (!container) return;
+
+  const cart = getCart();
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = `<p class="opacity-75">Varukorgen är tom. <a href="../index.html" class="text-info">Handla här</a></p>`;
+    document.getElementById("cart-total").innerHTML = "";
+    return;
+  }
+
+  cart.forEach((item) => {
+    const lineTotal = (item.price * item.quantity).toFixed(2);
+    const div = document.createElement("div");
+    div.className = "card bg-secondary text-light border-0 mb-3";
+    div.innerHTML = `
+      <div class="card-body d-flex align-items-center gap-3">
+        <img src="${item.thumbnail}" style="width:70px;height:70px;object-fit:cover;border-radius:.4rem;">
+        <div class="flex-grow-1">
+          <h6 class="mb-1">${item.title}</h6>
+          <p class="mb-0">${item.price} kr × ${item.quantity} = <strong>${lineTotal} kr</strong></p>
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+if (document.getElementById("cart-items")) {
+  renderCart();
+}
+
 const productContainer = document.getElementById("products");
 
 if (productContainer) {
