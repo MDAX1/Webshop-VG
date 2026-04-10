@@ -102,6 +102,27 @@ if (document.getElementById("cart-items")) {
   renderCart();
 }
 
+function removeFromCart(id) {
+  const cart = getCart().filter((item) => item.id !== id);
+  saveCart(cart);
+  updateCartBadge();
+  renderCart();
+}
+
+function updateQuantity(id, delta) {
+  const cart = getCart();
+  const item = cart.find((i) => i.id === id);
+  if (!item) return;
+  item.quantity += delta;
+  if (item.quantity <= 0) {
+    removeFromCart(id);
+    return;
+  }
+  saveCart(cart);
+  updateCartBadge();
+  renderCart();
+}
+
 const productContainer = document.getElementById("products");
 
 if (productContainer) {
