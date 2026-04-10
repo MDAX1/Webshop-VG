@@ -1,3 +1,23 @@
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById("cart-badge");
+  if (!badge) return;
+  const total = getCart().reduce((sum, item) => sum + item.quantity, 0);
+  badge.textContent = total;
+  badge.style.display = total > 0 ? "inline-block" : "none";
+}
+
+// Kör badge-uppdatering vid varje sidladdning
+updateCartBadge();
+
 const productContainer = document.getElementById("products");
 
 if (productContainer) {
