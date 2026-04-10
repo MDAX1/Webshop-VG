@@ -16,30 +16,28 @@ function saveCart(cart) {
 }
 
 /* =========================================================
-   BADGE (GLOBAL)
+   BADGE
 ========================================================= */
 function updateBadge() {
   const badge = document.getElementById("cart-badge");
   if (!badge) return;
 
   const total = getCart().reduce((sum, i) => sum + i.quantity, 0);
-
   badge.textContent = total;
   badge.style.display = total ? "inline-block" : "none";
 }
 
 /* =========================================================
-   TOAST (MODERN FEEDBACK)
+   TOAST
 ========================================================= */
 function toast(msg) {
-  let wrap = document.getElementById("toast-wrap");
+  let wrap = document.getElementById("toast");
 
   if (!wrap) {
     wrap = document.createElement("div");
-    wrap.id = "toast-wrap";
+    wrap.id = "toast";
     wrap.style.cssText = `
       position:fixed; bottom:20px; right:20px;
-      display:flex; flex-direction:column; gap:10px;
       z-index:9999;
     `;
     document.body.appendChild(wrap);
@@ -47,16 +45,15 @@ function toast(msg) {
 
   const el = document.createElement("div");
   el.textContent = msg;
-
   el.style.cssText = `
     background:#0d6efd;
     color:#fff;
-    padding:10px 18px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,.3);
-    transform:translateY(20px);
+    padding:10px 15px;
+    border-radius:10px;
+    margin-top:10px;
     opacity:0;
-    transition:all .4s ease;
+    transform:translateY(10px);
+    transition:.3s;
   `;
 
   wrap.appendChild(el);
@@ -68,17 +65,16 @@ function toast(msg) {
 
   setTimeout(() => {
     el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    setTimeout(() => el.remove(), 400);
+    setTimeout(() => el.remove(), 300);
   }, 2000);
 }
 
 /* =========================================================
-   CHANGE QUANTITY
+   CHANGE QUANTITY (FIXED)
 ========================================================= */
 function changeQty(product, delta) {
   let cart = getCart();
-  let item = cart.find(i => i.id === product.id);
+  let item = cart.find((i) => i.id === product.id);
 
   if (!item && delta > 0) {
     cart.push({
@@ -86,14 +82,14 @@ function changeQty(product, delta) {
       title: product.title,
       price: product.price,
       thumbnail: product.thumbnail,
-      quantity: 1
+      quantity: 1,
     });
     toast("Added to cart");
   } else if (item) {
     item.quantity += delta;
 
     if (item.quantity <= 0) {
-      cart = cart.filter(i => i.id !== product.id);
+      cart = cart.filter((i) => i.id !== product.id);
       toast("Removed from cart");
     }
   }
@@ -104,54 +100,50 @@ function changeQty(product, delta) {
 }
 
 /* =========================================================
-   PRODUCTS (INDEX PAGE)
+   PRODUCTS (INDEX)
 ========================================================= */
 function renderProducts() {
   const container = document.getElementById("products");
   if (!container) return;
 
   fetch(API)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       container.innerHTML = "";
 
-      data.products.forEach(p => {
-        const cartItem = getCart().find(i => i.id === p.id);
+      data.products.forEach((p) => {
+        const cartItem = getCart().find((i) => i.id === p.id);
 
         const el = document.createElement("div");
         el.className = "col-md-3";
 
         el.innerHTML = `
-        <div class="card product-card h-100 bg-secondary text-light border-0 shadow">
+        <div class="card bg-secondary text-light p-3 h-100">
 
-          <div class="img-wrap">
-            <img src="${p.thumbnail}" class="card-img-top">
-          </div>
+          <img src="${p.thumbnail}" class="product-thumb">
 
-          <div class="card-body d-flex flex-column">
-            <h6 class="fw-bold">${p.title}</h6>
-            <p class="text-info">${p.price} kr</p>
+          <h6 class="mt-2">${p.title}</h6>
+          <p class="text-info">${p.price} kr</p>
 
-            ${
-              cartItem
-                ? `
-                <div class="d-flex justify-content-center align-items-center gap-2 mt-auto">
-                  <button class="btn btn-light btn-sm">−</button>
-                  <span class="fw-bold">${cartItem.quantity}</span>
-                  <button class="btn btn-light btn-sm">+</button>
-                </div>`
-                : `
-                <button class="btn btn-primary mt-auto">Add to Cart</button>`
-            }
+          ${
+            cartItem
+              ? `
+              <div class="d-flex gap-2">
+                <button class="btn btn-light btn-sm">−</button>
+                <span>${cartItem.quantity}</span>
+                <button class="btn btn-light btn-sm">+</button>
+              </div>`
+              : `
+              <button class="btn btn-primary">Add to cart</button>`
+          }
 
-            <a href="pages/product.html?id=${p.id}" 
-               class="btn btn-outline-light btn-sm mt-2">
-               View Product
-            </a>
-          </div>
+          <a href="pages/product.html?id=${p.id}" 
+             class="btn btn-outline-light mt-2">
+             View
+          </a>
+
         </div>`;
 
-        // EVENTS
         if (cartItem) {
           el.querySelectorAll("button")[0].onclick = () => changeQty(p, -1);
           el.querySelectorAll("button")[1].onclick = () => changeQty(p, 1);
@@ -165,7 +157,7 @@ function renderProducts() {
 }
 
 /* =========================================================
-   CART PAGE
+   CART PAGE (FIXED IMAGE SIZE)
 ========================================================= */
 function renderCart() {
   const container = document.getElementById("cart-container");
@@ -177,22 +169,18 @@ function renderCart() {
   container.innerHTML = "";
 
   if (!cart.length) {
-    container.innerHTML = `
-      <div class="text-center py-5">
-        <h4>Your cart is empty</h4>
-        <a href="../index.html" class="btn btn-primary mt-3">Go shopping</a>
-      </div>`;
+    container.innerHTML = "<h4>Your cart is empty</h4>";
     summary.innerHTML = "";
     return;
   }
 
   let total = 0;
 
-  cart.forEach(item => {
+  cart.forEach((item) => {
     total += item.price * item.quantity;
 
     const el = document.createElement("div");
-    el.className = "cart-item card bg-secondary text-light mb-3 p-3";
+    el.className = "card bg-secondary text-light p-3 mb-3";
 
     el.innerHTML = `
       <div class="d-flex align-items-center gap-3">
@@ -201,15 +189,17 @@ function renderCart() {
 
         <div class="flex-grow-1">
           <h6>${item.title}</h6>
-          <small>${item.price} kr</small>
+          <p>${item.price} kr</p>
         </div>
 
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex gap-2">
           <button class="btn btn-light btn-sm">−</button>
           <span>${item.quantity}</span>
           <button class="btn btn-light btn-sm">+</button>
         </div>
-      </div>`;
+
+      </div>
+    `;
 
     el.querySelectorAll("button")[0].onclick = () => changeQty(item, -1);
     el.querySelectorAll("button")[1].onclick = () => changeQty(item, 1);
@@ -218,16 +208,13 @@ function renderCart() {
   });
 
   summary.innerHTML = `
-    <div class="card bg-secondary p-4 text-light shadow">
-      <h4>Total: <span class="text-info">${total} kr</span></h4>
-      <a href="order.html" class="btn btn-primary mt-3 w-100">
-        Proceed to Checkout
-      </a>
-    </div>`;
+    <h4>Total: ${total} kr</h4>
+    <a href="order.html" class="btn btn-primary">Checkout</a>
+  `;
 }
 
 /* =========================================================
-   PRODUCT PAGE
+   PRODUCT PAGE (FIXED + SMALLER IMAGE)
 ========================================================= */
 function renderProductPage() {
   const el = document.getElementById("product-detail");
@@ -236,24 +223,53 @@ function renderProductPage() {
   const id = new URLSearchParams(location.search).get("id");
 
   fetch(`${API}/${id}`)
-    .then(res => res.json())
-    .then(p => {
+    .then((res) => res.json())
+    .then((p) => {
+      const product = {
+        id: p.id,
+        title: p.title,
+        price: p.price,
+        thumbnail: p.thumbnail,
+      };
+
       el.innerHTML = `
-        <div class="card bg-secondary text-light p-4 shadow-lg product-detail">
+        <div class="row align-items-center">
 
-          <img src="${p.thumbnail}" class="mb-4 big-img">
+          <div class="col-md-6 text-center">
+            <img src="${p.thumbnail}" class="product-big">
+          </div>
 
-          <h2>${p.title}</h2>
-          <p class="opacity-75">${p.description}</p>
+          <div class="col-md-6">
+            <h2>${p.title}</h2>
+            <p>${p.description}</p>
+            <h3 class="text-info">${p.price} kr</h3>
 
-          <h4 class="text-info">${p.price} kr</h4>
+            <div class="d-flex gap-2">
+              <button id="minus" class="btn btn-light">−</button>
+              <span id="qty">0</span>
+              <button id="plus" class="btn btn-light">+</button>
+            </div>
+          </div>
 
-          <button class="btn btn-primary mt-3">
-            Add to Cart
-          </button>
-        </div>`;
+        </div>
+      `;
 
-      el.querySelector("button").onclick = () => changeQty(p, 1);
+      function updateUI() {
+        const item = getCart().find((i) => i.id === product.id);
+        document.getElementById("qty").textContent = item ? item.quantity : 0;
+      }
+
+      document.getElementById("plus").onclick = () => {
+        changeQty(product, 1);
+        updateUI();
+      };
+
+      document.getElementById("minus").onclick = () => {
+        changeQty(product, -1);
+        updateUI();
+      };
+
+      updateUI();
     });
 }
 
@@ -266,16 +282,11 @@ function renderRecipe() {
 
   const data = JSON.parse(localStorage.getItem("lastOrder")) || [];
 
-  if (!data.length) {
-    el.innerHTML = "<h4>No products found</h4>";
-    return;
-  }
-
-  data.forEach(item => {
+  data.forEach((item) => {
     el.innerHTML += `
       <div class="col-md-3">
-        <div class="card bg-secondary text-light p-3 shadow product-card">
-          <img src="${item.thumbnail}">
+        <div class="card bg-secondary text-light p-3">
+          <img src="${item.thumbnail}" class="product-thumb">
           <h6>${item.title}</h6>
           <p>${item.quantity} pcs</p>
         </div>
