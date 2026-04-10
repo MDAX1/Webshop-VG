@@ -1,104 +1,81 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/style.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      defer
-    ></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
 
-  <body class="bg-dark text-light d-flex flex-column min-vh-100">
-    <header class="bg-primary">
-      <nav class="navbar navbar-expand-lg navbar-dark container">
-        <!-- Logo -->
-        <a class="navbar-brand fw-bold" href="../index.html">Webshop</a>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../js/webshop.js" defer></script>
+</head>
 
-        <!-- Hamburger button -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
 
-        <!-- Links -->
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav gap-lg-3 text-center">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
-            </li>
+<header class="bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark container">
 
-            <li class="nav-item">
-              <a class="nav-link" href="aboutUs.html">About</a>
-            </li>
+    <a class="navbar-brand" href="../index.html">Webshop</a>
 
-            <li class="nav-item">
-              <a class="nav-link" href="contactUs.html">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link position-relative" href="pages/cart.html">
-                🛒
-                <span
-                  id="cart-badge"
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                  style="display: none"
-                  >0</span
-                >
-              </a>
-            </li>
-          </ul>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav gap-3">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link active" href="aboutUs.html">About</a></li>
+        <li><a class="nav-link" href="contactUs.html">Contact</a></li>
+
+        <!-- FIXED CART LINK -->
+        <li>
+          <a class="nav-link position-relative" href="cart.html">
+            🛒
+            <span id="cart-badge"
+              class="badge bg-danger position-absolute top-0 start-100 translate-middle"></span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main class="container flex-grow-1 py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+      <div class="card bg-secondary text-light p-5 shadow-lg text-center about-card">
+
+        <h1 class="mb-3">About Us</h1>
+
+        <p class="lead">
+          I am a Java building a modern e-commerce webshop.
+        </p>
+
+        <hr class="border-light">
+
+        <p>
+          This project is built using HTML, Bootstrap and JavaScript.
+          It includes a shopping cart system, product pages, and order flow.
+        </p>
+
+        <div class="mt-4">
+          <h5 class="text-info">Team</h5>
+          <p><strong>Mads</strong></p>
         </div>
-      </nav>
-    </header>
-    <main class="container py-5 flex-grow-1 d-flex justify-content-center">
-      <div class="col-lg-6 col-md-8 col-12">
-        <div
-          class="card shadow-lg border-0 bg-secondary text-light p-4 text-center"
-        >
-          <h1 class="mb-4">About Us</h1>
-          <p class="lead">How nice that you want to get to know us.</p>
-          <p>
-            We are two students learning Java development and practicing how
-            front-end works.
-          </p>
-          <p class="mt-4">
-            Best regards,<br />
-            <strong>Raul & Mads</strong>
-          </p>
-        </div>
+
+        <a href="../index.html" class="btn btn-outline-light mt-3">
+          ← Back to Shop
+        </a>
+
       </div>
-    </main>
-    <footer class="bg-primary text-center text-white py-4">
-      <div class="container">
-        <ul class="nav justify-content-center mb-3">
-          <li class="nav-item">
-            <a href="../index.html" class="nav-link text-white">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="/pages/aboutUs.html" class="nav-link text-white">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="/pages/contactUs.html" class="nav-link text-white"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <hr class="border-light" />
-        <p class="mb-0 opacity-75">© 2026 Webshop, Inc</p>
-      </div>
-    </footer>
-  </body>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="bg-primary text-center text-white py-4 mt-auto">
+  <p class="mb-0">© 2026 Webshop</p>
+</footer>
+
+</body>
 </html>
