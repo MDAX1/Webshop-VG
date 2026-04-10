@@ -3,26 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webshop</title>
+    <title>Cart – Webshop</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
+      defer
     ></script>
-    <script src="/js/webshop.js" defer></script>
   </head>
-
-  <body class="bg-dark text-white d-flex flex-column min-vh-100">
-    <header class="bg-primary p-3">
+  <body class="bg-dark text-light d-flex flex-column min-vh-100">
+    <header class="bg-primary">
       <nav class="navbar navbar-expand-lg navbar-dark container">
-        <a class="navbar-brand fw-bold fs-4" href="index.html">Webshop</a>
+        <a class="navbar-brand fw-bold" href="../index.html">Webshop</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -35,18 +30,18 @@
           class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <ul class="navbar-nav gap-lg-3 text-center">
+          <ul class="navbar-nav gap-lg-3 text-center align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
+              <a class="nav-link" href="../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/aboutUs.html">About</a>
+              <a class="nav-link" href="aboutUs.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/contactUs.html">Contact</a>
+              <a class="nav-link" href="contactUs.html">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link position-relative" href="pages/cart.html">
+              <a class="nav-link active position-relative" href="cart.html">
                 🛒
                 <span
                   id="cart-badge"
@@ -60,5 +55,33 @@
         </div>
       </nav>
     </header>
-</body>
+
+    <main class="container py-5 flex-grow-1">
+      <a href="../index.html" class="btn btn-outline-light mb-4"
+        >← Back to shop</a
+      >
+      <h2 class="mb-4 fw-bold">Your Cart</h2>
+      <div id="cart-items"></div>
+      <div id="cart-total" class="mt-4"></div>
+    </main>
+
+    <footer class="bg-primary text-center text-white py-4">
+      <div class="container">
+        <ul class="nav justify-content-center mb-3">
+          <li class="nav-item">
+            <a href="../index.html" class="nav-link text-white">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="aboutUs.html" class="nav-link text-white">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="contactUs.html" class="nav-link text-white">Contact</a>
+          </li>
+        </ul>
+        <hr class="border-light" />
+        <p class="mb-0 opacity-75">© 2026 Webshop, Inc</p>
+      </div>
+    </footer>
+    <script src="../js/webshop.js"></script>
+  </body>
 </html>

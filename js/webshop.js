@@ -15,6 +15,25 @@ function updateCartBadge() {
   badge.style.display = total > 0 ? "inline-block" : "none";
 }
 
+const col = document.createElement("div");
+col.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4";
+col.innerHTML = `
+  <div class="card h-100 bg-secondary text-light border-0">
+    <img src="${product.thumbnail}" class="card-img-top"
+         style="height:200px;object-fit:cover;">
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">${product.title}</h5>
+      <p class="card-text fw-bold">${product.price} kr</p>
+      <button class="btn btn-primary mt-auto add-btn">🛒 Lägg i varukorg</button>
+    </div>
+  </div>`;
+
+col.querySelector(".add-btn").addEventListener("click", () => {
+  addToCart(product);
+});
+
+productContainer.appendChild(col);
+
 // Kör badge-uppdatering vid varje sidladdning
 updateCartBadge();
 
