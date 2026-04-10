@@ -1,52 +1,101 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webshop</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-  </script>
-  <script src="/js/webshop.js" defer></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webshop</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/webshop.js" defer></script>
+  </head>
 
-<body class="bg-dark text-white d-flex flex-column min-vh-100">
-  <header class="bg-primary p-3">
-    <nav class="navbar navbar-expand-lg navbar-dark container">
-      <a class="navbar-brand fw-bold fs-4" href="index.html">Webshop</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav gap-lg-3 text-center">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/aboutUs.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/contactUs.html">Contact</a></li>
-        </ul>
+  <body class="bg-dark text-white d-flex flex-column min-vh-100">
+    <header class="bg-primary p-3">
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="navbar-brand fw-bold fs-4" href="index.html">Webshop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav gap-lg-3 text-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/aboutUs.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/contactUs.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link position-relative" href="pages/cart.html">
+                🛒
+                <span
+                  id="cart-badge"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  style="display: none"
+                  >0</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section
+      id="hero-section"
+      class="text-center text-white d-flex align-items-center"
+    >
+      <div class="container">
+        <h1 class="display-5 fw-bold">Welcome to Webshop!</h1>
+        <p class="lead opacity-75">
+          Discover amazing products curated just for you.
+        </p>
+        <a href="#products" class="btn btn-primary btn-lg mt-3">Shop Now</a>
       </div>
-    </nav>
-  </header>
-<section id="hero-section" class="text-center text-white d-flex align-items-center">
-  <div class="container">
-    <h1 class="display-5 fw-bold">Welcome to Webshop!</h1>
-    <p class="lead opacity-75">Discover amazing products curated just for you.</p>
-    <a href="#products" class="btn btn-primary btn-lg mt-3">Shop Now</a>
-  </div>
-</section>
-  <main class="container my-5 flex-grow-1">
-    <div id="products" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center"></div>
-  </main>
-  <footer class="bg-primary text-center text-white py-4 mt-auto">
-    <div class="container">
-      <ul class="nav justify-content-center mb-3">
-        <li class="nav-item"><a href="/#" class="btn btn-primary mx-1">Home</a></li>
-        <li class="nav-item"><a href="/pages/aboutUs.html" class="btn btn-primary mx-1">About</a></li>
-        <li class="nav-item"><a href="/pages/contactUs.html" class="btn btn-primary mx-1">Contact</a></li>
-      </ul>
-      <hr class="opacity-50" />
-      <p class="mb-0 opacity-75">© 2026 Webshop, Inc</p>
-    </div>
-  </footer>
-</body>
+    </section>
+    <main class="container my-5 flex-grow-1">
+      <div
+        id="products"
+        class="row row-cols-1 row-cols-md-3 g-4 justify-content-center"
+      ></div>
+    </main>
+    <footer class="bg-primary text-center text-white py-4 mt-auto">
+      <div class="container">
+        <ul class="nav justify-content-center mb-3">
+          <li class="nav-item">
+            <a href="/#" class="btn btn-primary mx-1">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/aboutUs.html" class="btn btn-primary mx-1">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/contactUs.html" class="btn btn-primary mx-1"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <hr class="opacity-50" />
+        <p class="mb-0 opacity-75">© 2026 Webshop, Inc</p>
+      </div>
+    </footer>
+  </body>
 </html>
